@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.Footer{
+    max-width: 100%;
+    overflow-x: hidden;
+    background: #3980c0;
+    margin-top: 50px;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 35px 0px 28px 0px;
+}
+
+.direction{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.img-f{
+    height: 150px;
+    
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+}
+
+.icon{
+    height: 30px;
+    padding: 0px 0px 0px 30px;
+}

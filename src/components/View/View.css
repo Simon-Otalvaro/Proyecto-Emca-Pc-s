@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.views{
+    max-width: 100%;
+    overflow-x: hidden;  
+}
+
+.view{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+   height: 56.58vh;
+}
+
+.view-img{
+    width: 250px;
+    height: 250px;
+}
+
+.creation-view{
+    border: solid 1px;
+    border-radius: 15px;
+    box-shadow: 15px black;
+    margin: 100px 50px 0px 50px;
+    padding: 40px 28px 187px 33px;
+}

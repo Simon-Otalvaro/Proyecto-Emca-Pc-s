@@ -1,0 +1,22 @@
+
+.navber{
+    background: #3980c0;
+    display: flex;
+    justify-content: space-around;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.logo{
+    height: 150px;
+}
+.name{
+    display: flex;
+    justify-content: center;
+}
+.n-p{
+    margin-top: 70px;
+    color: white;
+}
+p{
+    font-size: 19px;
+}

@@ -1,0 +1,152 @@
+/* Details.css */
+.details-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.details-container h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.field{
+  margin: 15px 0; /* Aumenta el espacio vertical entre cada detalle */
+  font-size: 16px;
+  line-height: 1.6; /* Aumenta la altura de línea para mayor legibilidad */
+}
+
+.details-content li {
+  margin-bottom: 15px; /* Agrega espacio extra al final de cada elemento de lista */
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+.previ {
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+}
+
+.file-viewer {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.file-viewer h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.file-viewer a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.file-viewer a:hover {
+  text-decoration: underline;
+}
+
+.p-details {
+  padding: 8px 0;
+}
+
+.archi {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.archi:hover {
+  background-color: #0056b3;
+}
+
+.button-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.file-deta {
+  width: 100%;
+  text-align: center;
+}
+
+button.delete-form{
+  background-color: red;
+}
+
+.back {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 6px 6px 0 0;
+  font-weight: bold;
+}
+
+.img-details {
+  height: 80px;
+  width: auto;
+}
+
+/* Estilos específicos para botones según las clases */
+.archi, .button-details button, .file-deta button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.archi:hover, .button-details button:hover, .file-deta button:hover {
+  background-color: #0056b3;
+}
+
+.bnts-from{
+  display: flex;
+}
+
+.delete{
+  padding: 10px 0px 10px 0px;
+  background-color: red;
+}
+
+.vol-from{
+  padding: 15px 0px 0px 10px;
+}
+/* 
+.delete-form{
+  padding: 10px ;
+  background-color: red;
+} */
+

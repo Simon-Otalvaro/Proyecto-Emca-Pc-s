@@ -1,0 +1,57 @@
+/* src/components/Register.css */
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 80px;
+  width: 430px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+form {
+  width: 100%;
+}
+
+.name, .apelli, .Email, .pass, .clave {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 10px 0px 10px 0px;
+  background-color: #007bff; /* Color verde */
+  color: rgb(252, 252, 252);
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* button:hover {
+  background-color: #218838; /* Verde más oscuro al pasar el ratón */
+/* } */ 
+
+.message {
+  margin-top: 10px; /* Espacio arriba del mensaje */
+  color: #d9534f; /* Color rojo para mensajes de error */
+  font-weight: bold; /* Negrita para resaltar el mensaje */
+}
+.name{
+  display: flex;
+  flex-direction: column;
+}
