@@ -17,13 +17,12 @@ export const Details = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/v1/from/${id}`);
-        const { file, id_formulario, ...rest } = response.data; // Excluyendo file e id_formulario
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/from/${id}`);
+        const { file, id_formulario, ...rest } = response.data;
         setFormDetails(rest);
 
-        // Asegúrate de que 'file' sea una cadena JSON válida
         const parsedFiles = Array.isArray(file) ? file : JSON.parse(file || '[]');
-        console.log("Archivos obtenidos:", parsedFiles); // Para ver qué archivos se están cargando
+        console.log("Archivos obtenidos:", parsedFiles);
         setUploadedFiles(parsedFiles);
       } catch (error) {
         console.error('Error al obtener los datos del formulario:', error);
@@ -41,7 +40,7 @@ export const Details = () => {
   const handleEditClick = () => {
     if (window.confirm('¿Estás seguro de que deseas editar?')) {
       setIsEditing(true);
-      setEditedFormDetails(formDetails); // Rellenar con los datos actuales
+      setEditedFormDetails(formDetails);
     }
   };
 
@@ -53,7 +52,7 @@ export const Details = () => {
   const handleSaveChanges = async () => {
     if (window.confirm('¿Estás seguro de que deseas guardar los cambios?')) {
       try {
-        const response = await axios.patch(`http://localhost:3000/api/v1/from/${id}`, editedFormDetails);
+        const response = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/from/${id}`, editedFormDetails);
         if (response.status === 200) {
           setFormDetails(editedFormDetails);
           setIsEditing(false);
@@ -77,17 +76,17 @@ export const Details = () => {
     for (let i = 0; i < files.length; i++) {
       const formData = new FormData();
       formData.append('file', files[i]);
-      formData.append('id_formulario', id); // Agrega el ID del formulario aquí
+      formData.append('id_formulario', id);
 
       try {
-        const response = await axios.patch(`http://localhost:3000/api/v1/from/${id}/uploads`, formData, {
+        const response = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/from/${id}/uploads`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
 
         if (response.status === 200) {
-          uploaded.push(response.data.file); // Asumiendo que la respuesta contiene el archivo
+          uploaded.push(response.data.file);
         }
       } catch (error) {
         console.error('Error al subir el archivo:', error);
@@ -99,37 +98,10 @@ export const Details = () => {
     setFiles([]);
   };
 
-  // const handleDeleteFile = async (index) => {
-  //   const fileToDelete = uploadedFiles[index].name; // Asegúrate de acceder a la propiedad `name`
-
-  //   if (window.confirm('¿Estás seguro de que deseas eliminar este archivo?')) {
-  //     try {
-  //       // Codificar el nombre del archivo para la URL
-  //       const encodedFileToDelete = encodeURIComponent(fileToDelete);
-  //       const response = await fetch(`http://localhost:3000/api/v1/from/delete-file/${id}/${encodedFileToDelete}`, {
-  //         method: "DELETE",
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       });
-
-  //       if (!response.ok) {
-  //         throw new Error("Error al eliminar el archivo: " + response.statusText);
-  //       }
-
-  //       // Si llegas aquí, la respuesta fue exitosa
-  //       setUploadedFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
-  //     } catch (error) {
-  //       console.error("Error al eliminar el archivo:", error);
-  //       alert('Error al eliminar el archivo: ' + error.message);
-  //     }
-  //   }
-  // };
-
   const handleDeleteForm = async () => {
     if (window.confirm('¿Estás seguro de que deseas eliminar la hoja de vida?')) {
       try {
-        await axios.delete(`http://localhost:3000/api/v1/from/${id}`);
+        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/from/${id}`);
         navigate('/main');
       } catch (error) {
         console.error('Error al eliminar el formulario:', error);
@@ -144,6 +116,7 @@ export const Details = () => {
 
   return (
     <div className="details-container">
+            <h1 className='h1-sesion'>Inventory.Soft</h1>
       <div className='bnts-from'>
         <Link to='/main'>
           <img className='previ' src={previous} alt="" />
@@ -175,17 +148,9 @@ export const Details = () => {
         <ul>
           {uploadedFiles.map((file, index) => (
             <li key={index} className="file-item">
-              <a href={`http://localhost:3000/uploads/${file.path}`} target="_blank" rel="noopener noreferrer">
+              <a href={`${process.env.REACT_APP_BACKEND_URL.replace('/api/v1', '')}/uploads/${file.path}`} target="_blank" rel="noopener noreferrer">
                 {file.name}
               </a>
-              {/* <button
-                className="delete"
-                type="button"
-                onClick={() => handleDeleteFile(index)}
-                style={{ backgroundColor: "red", color: "white" }}
-              >
-                Eliminar
-              </button> */}
             </li>
           ))}
         </ul>

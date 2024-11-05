@@ -12,7 +12,7 @@ export const FromProvider = ({ children }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/from');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/from`);
         setItems(response.data); // Asumiendo que la respuesta tiene un array de objetos
         setLoading(false);
       } catch (err) {
@@ -22,7 +22,7 @@ export const FromProvider = ({ children }) => {
     };
     const fetchUser = async () => {
       try{
-        const responses = await axios.get('http://localhost:3000/api/v1/user');
+        const responses = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`);
         setUsers(responses.data);
         setLoading(false);
       } catch (error) {

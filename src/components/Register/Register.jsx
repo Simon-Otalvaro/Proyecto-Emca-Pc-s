@@ -39,7 +39,7 @@ export const Register = () => {
     
 
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/auth/register', {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, {
         nombre,
         apellido,
         correo,
@@ -68,6 +68,8 @@ export const Register = () => {
   return (
     <div className='register'>
       <form onSubmit={handleSubmit}>
+      <h1 className='h1-sesion'>Inventory.Soft</h1>
+
         <div className='name'>
           <p>Nombre</p>
           <input type="text" value={nombre} onChange={(e) => setName(e.target.value)} />

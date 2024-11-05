@@ -13,7 +13,7 @@ export const Main = () => {
   useEffect(() => {
     const fetchForms = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/from');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/from`);
         setForms(response.data);
       } catch (error) {
         console.error('Error al obtener los formularios:', error);

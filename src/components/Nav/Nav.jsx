@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo-blanco.png'
 import './Nav.css'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+// import { useParams } from 'react-router-dom'
+// import axios from 'axios'
 // import { useUser } from '../../context/UserContext';
 
 export const Nav = () => {
@@ -26,13 +26,13 @@ export const Nav = () => {
   return (
     <div className='nav'>
       <div className='navber'>
-
+      
       <div>
         <img className='logo' src={logo} alt="" />
       </div>
       <div className='name'>
-{/* <p><strong>{userNav.nombre}</strong></p>
-<p><strong>{userNav.apellido}</strong></p> */}
+      <h1 className='h1-nav'>Inventory.Soft</h1>
+
       </div>
     </div>
       </div>

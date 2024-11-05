@@ -80,7 +80,7 @@ export const From = () => {
     // formData.append('file', file); // Agregar el archivo a los datos del formulario
 
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/from', formData, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/from`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -129,6 +129,7 @@ export const From = () => {
   return (
     <div className='container'>
       <form className='from' onSubmit={handleSubmit}>
+      <h1 className='h1-sesion'>Inventory.Soft</h1>
         <div>
 
         <Link to='/home-152628282828'>

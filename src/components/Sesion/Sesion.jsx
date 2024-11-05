@@ -26,7 +26,7 @@ export const Sesion = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/auth/login', {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
         correo,
         contraseña,
       });
@@ -54,6 +54,7 @@ export const Sesion = () => {
   return (
     <div className='session'>
       <form onSubmit={handleSubmit}>
+        <h1 className='h1-sesion'>Inventory.Soft</h1>
         <div className='logo-sesion'>
 
         <img className='log' src={log} alt="" />
