@@ -1,21 +1,19 @@
-// src/components/Sesion.js
+// src/components/Sesion.jsx
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import './Sesion.css';
-import log from '../../assets/logo-blanco.png'
+import log from '../../assets/logo-blanco.png';
 import axios from 'axios';
 
-
 export const Sesion = () => {
-  // const { setUser } = useUser();
   const [correo, setCorreo] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Instancia de useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!correo || !contraseña) {
       setMessage('Por favor, completa todos los campos obligatorios.');
       return;
@@ -24,81 +22,69 @@ export const Sesion = () => {
       setMessage('Por favor, ingrese un correo válido que contenga "@gmail.com"');
       return;
     }
-  
+
     try {
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
         correo,
         contraseña,
       });
-      
+
       if (response.status === 201) {
         setMessage('Inicio de sesión exitoso');
-        console.log('Redirigiendo a /home');
-        console.log(response); // Verifica que obtienes una respuesta exitosa
-        navigate('/home-152628282828'); // Redirige inmediatamente al home
+        navigate('/home-152628282828');
       } else {
-        setMessage(response.data.message); // Mensaje de error del backend
+        setMessage(response.data.message);
       }
     } catch (error) {
       console.error(error);
-      if (error.response) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('Error al iniciar sesión.');
-      }
+      setMessage(error.response?.data?.message || 'Error al iniciar sesión.');
     }
   };
-  
 
   return (
-  <div className="session">
-   <form onSubmit={handleSubmit}>
-    <h1 className="h1-sesion">Inventory - Software</h1>
+    <div className="session">
+      <form onSubmit={handleSubmit}>
+        <h1 className="h1-sesion">Inventory - Software</h1>
 
-    {/* Logo EMCA */}
-    <div className="logo-sesion">
-      <img className="log" src={log} alt="Logo de la aplicación" />
+        <div className="logo-sesion">
+          <img className="log" src={log} alt="Logo de la aplicación" />
+        </div>
+
+        <div className="cp">
+          <div className="email">
+            <label className="ep" htmlFor="correo">Correo</label>
+            <input
+              className="input"
+              type="email"
+              id="correo"
+              placeholder="example@gmail.com"
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
+            />
+          </div>
+
+          <div className="password">
+            <label className="ep" htmlFor="contraseña">Contraseña</label>
+            <input
+              className="input"
+              type="password"
+              id="contraseña"
+              placeholder="*********"
+              value={contraseña}
+              onChange={(e) => setContraseña(e.target.value)}
+            />
+          </div>
+
+          <div className="btn-group">
+            <button className="ci" type="submit">Iniciar Sesión</button>
+            <Link to="/register">
+              <button className="ci" type="button">Crear Cuenta</button>
+            </Link>
+          </div>
+        </div>
+
+        {message && <p className="message">{message}</p>}
+      </form>
     </div>
-
-    <div className="cp">
-      <div className="email">
-        <label className="ep" htmlFor="correo">Correo</label>
-        <input
-          className="input"
-          type="email"
-          id="correo"
-          placeholder="example@gmail.com"
-          value={correo}
-          onChange={(e) => setCorreo(e.target.value)}
-        />
-      </div>
-
-      <div className="password">
-        <label className="ep" htmlFor="contraseña">Contraseña</label>
-        <input
-          className="input"
-          type="password"
-          id="contraseña"
-          placeholder="*********"
-          value={contraseña}
-          onChange={(e) => setContraseña(e.target.value)}
-        />
-      </div>
-
-      {/* Crear cuenta e Iniciar sesión */}
-      <div className="class">
-        <button className="ci" type="submit">Iniciar Sesión</button>
-        <Link to="/register">
-          <button className="ci" type="button">Crear Cuenta</button>
-        </Link>
-      </div>
-    </div>
-    {message && (
-      <p className="message">{message}</p>
-    )}
-
-   </form>
-  </div>
-
   );
 };

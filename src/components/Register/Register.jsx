@@ -1,9 +1,9 @@
+// src/components/Register.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Register.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useFromContext } from '../../context/FromContext';
-import fondoLogo from '../../assets/logo-blanco.png';
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -44,27 +44,14 @@ export const Register = () => {
 
       setMessage(response.data.message);
     } catch (error) {
-      if (error.response) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('Error al registrar el usuario.');
-      }
+      setMessage(error.response?.data?.message || 'Error al registrar el usuario.');
     }
   };
 
   return (
-    <div
-      className="register"
-      style={{
-        backgroundImage: `url(${fondoLogo})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundSize: '100%',
-        opacity: 1,
-      }}
-    >
+    <div className="register">
       <form onSubmit={handleSubmit}>
-        <h1 className="h1-sesion">Inventory - Software</h1>
+        <h1 className="h1-sesion">Crear Cuenta</h1>
 
         <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
@@ -91,7 +78,12 @@ export const Register = () => {
           <input id="codigo" type="text" value={codigo} onChange={(e) => setCode(e.target.value)} />
         </div>
 
-        <button className="btns-creation" type="submit">Crear Cuenta</button>
+        <div className="btn-group">
+          <button className="btns-creation" type="submit">Crear Cuenta</button>
+          <Link to="/">
+            <button className="btns-creation" type="button">Volver</button>
+          </Link>
+        </div>
 
         {message && <p className="message">{message}</p>}
       </form>
